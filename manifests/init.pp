@@ -14,7 +14,7 @@ class kibana3 {
     creates => $kibana_local,
     require => File['kibana_dir'],
   }
-  exec { 'untar_kibana':f
+  exec { 'untar_kibana':
     command => "tar zxvf ${kibana_local} -C ${kibana_dir} 2> /dev/null",
     path => ['/usr/bin', '/bin'],
     require => File['kibana_dir'],
