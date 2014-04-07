@@ -1,5 +1,4 @@
 class kibana3 {
-
   $dlcmd = "curl -o"
   $kibana_gz = "https://download.elasticsearch.org/kibana/kibana/kibana-3.0.0.tar.gz"
   $kibana_dir = "/usr/share/kibana"
@@ -15,8 +14,8 @@ class kibana3 {
     creates => $kibana_local,
     require => File['kibana_dir'],
   }
-  exec { 'untar_kibana':
-    command => "tar zxvf ${kibana_local} -d ${kibana_dir} 2> /dev/null",
+  exec { 'untar_kibana':f
+    command => "tar zxvf ${kibana_local} -C ${kibana_dir} 2> /dev/null",
     path => ['/usr/bin', '/bin'],
     require => File['kibana_dir'],
     creates => '/usr/share/kibana/kibana-3.0.0/'
