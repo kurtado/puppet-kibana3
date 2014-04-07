@@ -10,7 +10,7 @@ class kibana3 {
     mode => 775
   }
   exec { 'download_kibana':
-    command => "{$dlcmd} ${kibana_local} ${kibana_gz} 2> /dev/null",
+    command => "${dlcmd} ${kibana_local} ${kibana_gz} 2> /dev/null",
     path => ['/usr/bin', '/bin'],
     creates => $kibana_local,
     require => File['kibana_dir'],
